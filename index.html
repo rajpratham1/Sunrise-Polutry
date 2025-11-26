@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Poultry Farm | Manibhushan Ji</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐓</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #e67e22; /* Orange for yolk/sun */
+            --secondary-color: #2ecc71; /* Green for fresh/organic */
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-contact {
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            transition: transform 0.3s, background 0.3s !important;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            background: #d35400 !important;
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            /* UPDATED: High-quality image of hens and eggs */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1559058789-672da06263d8?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .hero-btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+        }
+
+        /* --- COMMON SECTION STYLES --- */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        /* --- OWNER SECTION --- */
+        .owner-section {
+            text-align: center;
+            background: #fff;
+        }
+
+        .owner-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .owner-title {
+            color: #777;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* --- NEW ABOUT US SECTION --- */
+        .about-us {
+            background-color: var(--light-color);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .about-features {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+        }
+
+        .feature i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .feature span {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* --- PRODUCTS GRID --- */
+        .products {
+            background: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-badge.hot { background: #e74c3c; }
+        .card-badge.premium { background: var(--dark-color); }
+
+        .product-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f0f0f0; /* Placeholder color */
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .product-price small {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark-color);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background: var(--primary-color);
+        }
+        
+        .order-btn.check-rate {
+            background: var(--primary-color);
+        }
+        
+        .order-btn.check-rate:hover {
+            background: #d35400;
+        }
+
+        /* --- NEW TESTIMONIALS SECTION --- */
+        .testimonials {
+            background-color: var(--light-color);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info h4 {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .stars {
+            color: #f1c40f;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            background: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 320px;
+            padding: 3rem;
+            background: var(--dark-color);
+            color: white;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-text p, .info-text a {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.8;
+            transition: color 0.3s;
+        }
+        
+        .info-text a:hover {
+             color: var(--primary-color);
+        }
+
+        .map-container {
+            flex: 1.5;
+            min-width: 320px;
+            min-height: 450px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(20%);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .footer-social {
+            margin: 1.5rem 0;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            margin: 0 5px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .developer-credit {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #aaa;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+        }
+
+        .developer-credit a {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+         .developer-credit a:hover {
+            text-decoration: underline;
+         }
+
+        /* --- RESPONSIVE CSS --- */
+        @media (max-width: 992px) {
+             .hero-content h1 { font-size: 3rem; }
+             .about-container { flex-direction: column; }
+             .about-img { width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                border-top: 1px solid #eee;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active { max-height: 500px; }
+
+            .nav-links a {
+                display: block;
+                padding: 1.5rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #f5f5f5;
+            }
+            
+            .btn-contact {
+                margin: 1rem auto;
+                width: 80%;
+                text-align: center;
+            }
+
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+            
+            .contact-container { flex-direction: column; }
+            .contact-info, .map-container { min-width: 100%; }
+            .map-container { height: 350px; }
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-sun"></i> 
+                Sunrise <span>Poultry</span>
+            </a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Rates & Products</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="btn-contact"><i class="fas fa-phone-alt"></i> Call Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span>Sunrise Poultry Farm</span></h1>
+            <p>Start your day with the freshest, organic country chicken and eggs, straight from Manibhushan Ji's farm to your table.</p>
+            <a href="#products" class="hero-btn">View Today's Rates</a>
+        </div>
+    </section>
+
+    <section class="owner-section">
+        <div class="section-container">
+            <div class="owner-name">Manibhushan Ji</div>
+            <div class="owner-title">Owner & Proprietor</div>
+            <p style="max-width: 700px; margin: auto; font-size: 1.1rem;">Ideally located in Kaithwalaiya Gawn, we are dedicated to raising healthy, happy poultry to provide our community with the most nutritious meat and eggs available.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-us">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose <span>Us?</span></h2>
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1582438417753-8235766b9a2c?q=80&w=800&auto=format&fit=crop" alt="Healthy Hens in a clean environment">
+                </div>
+                <div class="about-content">
+                    <h3>Commitment to Quality & Hygiene</h3>
+                    <p>At Sunrise Poultry Farm, we believe that healthy food starts with a healthy environment. We are committed to the highest standards of hygiene and care for our flock.</p>
+                    <p>Our poultry is raised on natural, organic feed, free from harmful chemicals and growth promoters. This ensures that you get meat and eggs that are not only delicious but also packed with natural nutrients, just as nature intended.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Hygienic Farm</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Organic Feed</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-egg"></i>
+                            <span>Farm-Fresh Daily</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Antibiotic-Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="section-container">
+            <h2 class="section-title">Our Premium <span>Selection</span></h2>
+            
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <span class="card-badge hot">Trending</span>
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1585541534259-640f117303d7?q=80&w=600&auto=format&fit=crop" alt="Bater Quail" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Bater (Quail)</h3>
+                        <div class="product-price">₹60 <small>/ pc</small></div>
+                        <a href="https://wa.me/919546010801?text=I'm interested in buying Bater" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="card-badge">Organic</span>
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1599581881857-e14f856f6c9d?q=80&w=600&auto=format&fit=crop" alt="Desi Hen" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Desi Hen (Local)</h3>
+                        <div class="product-price">₹350 <small>/ kg</small></div>
+                        <a href="https://wa.me/919546010801?text=I'm interested in buying Desi Hen" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="card-badge premium">Premium</span>
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1612170366624-b6330ce379f5?q=80&w=600&auto=format&fit=crop" alt="Kadaknath Chicken" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Kadaknath</h3>
+                        <div class="product-price">₹700 <small>/ kg</small></div>
+                        <a href="https://wa.me/919546010801?text=I'm interested in buying Kadaknath" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1605456337929-0753f5006603?q=80&w=600&auto=format&fit=crop" alt="Titir Guinea Fowl" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Titir (Guinea Fowl)</h3>
+                        <div class="product-price">₹650 <small>/ pc</small></div>
+                        <a href="https://wa.me/919546010801?text=I'm interested in buying Titir" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1605456337877-060d44cb9a89?q=80&w=600&auto=format&fit=crop" alt="Boiler Chicken" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Boiler Chicken</h3>
+                        <div class="product-price" style="font-size: 1.3rem;">Market Rate <small>(Up/Down)</small></div>
+                        <a href="https://wa.me/919546010801?text=What is today's Boiler chicken rate?" class="order-btn check-rate"><i class="fas fa-tag"></i> Check Today's Rate</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1615808568531-e18f94065142?q=80&w=600&auto=format&fit=crop" alt="Little Chicks" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Hunda & Chicks</h3>
+                        <div class="product-price">₹500 <small>/ pair</small></div>
+                        <a href="https://wa.me/919546010801?text=I'm interested in Hunda/Chicks" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="card-badge">Farm Fresh</span>
+                    <div class="product-img-container">
+                        <img src="https://images.unsplash.com/photo-1590796237172-e1f3d730691b?q=80&w=600&auto=format&fit=crop" alt="Fresh Eggs in a basket" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Fresh Eggs</h3>
+                        <div class="product-price">₹10 <small>/ pc</small></div>
+                        <a href="https://wa.me/919546010801?text=I need fresh eggs" class="order-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="section-container">
+            <h2 class="section-title">Customer <span>Comments</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Very fresh desi chicken and eggs. You can really taste the difference compared to market ones. Highly recommended!"</p>
+                    <div class="testimonial-user">
+                        <div class="user-info">
+                            <h4>Rajesh Kumar</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Manibhushan Ji provides excellent service. The Kadaknath I bought was genuine and of premium quality. Will buy again."</p>
+                    <div class="testimonial-user">
+                        <div class="user-info">
+                            <h4>Amit Singh</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Clean farm and healthy chicks. I bought a pair of Hunda and they are growing very well. Honest pricing too."</p>
+                    <div class="testimonial-user">
+                        <div class="user-info">
+                            <h4>Suresh Yadav</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-text">
+                            <h4>Farm Address</h4>
+                            <p>Ward Number 1, Lala Tola,<br>Kaithwalaiya Gawn, Bihar</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone-volume"></i></div>
+                        <div class="info-text">
+                            <h4>Call Us</h4>
+                            <p><a href="tel:9546010801">+91 9546010801</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <div class="info-text">
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:saurabhshrivastava536@gmail.com">saurabhshrivastava536@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe frameborder="0" src="https://maps.google.com/maps?q=Kaithwalaiya%20Gawn%2C%20Bihar&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">Sunrise Poultry Farm</span>
+        <p>Delivering freshness since 2020. Owned by Manibhushan Ji.</p>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919546010801"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>© 2024 Sunrise Poultry Farm. All Rights Reserved.</p>
+        
+        <div class="developer-credit">
+            <p>Developed by <a href="https://share.google/dHGGKQC5NnoCxTSLU" target="_blank">Pratham Kumar</a></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919546010801?text=Hello, I want to inquire about poultry products." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // 1. Mobile Navigation Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Change icon from hamburger to 'X'
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // 2. Sticky Header Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.5rem 5%';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.padding = '1rem 5%';
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
