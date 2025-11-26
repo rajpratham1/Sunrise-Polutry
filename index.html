@@ -13,12 +13,12 @@
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary-color: #e67e22; /* Orange for yolk/sun */
-            --secondary-color: #2ecc71; /* Green for fresh/organic */
+            --primary-color: #e67e22; /* Orange */
+            --secondary-color: #27ae60; /* Green */
             --dark-color: #2c3e50;
             --light-color: #f8f9fa;
             --text-color: #333;
-            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         * {
@@ -42,12 +42,11 @@
         /* --- HEADER & NAVIGATION --- */
         header {
             background: white;
-            box-shadow: var(--shadow);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s;
         }
 
         .navbar {
@@ -55,7 +54,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: auto;
         }
 
@@ -66,6 +65,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap;
         }
 
         .logo i {
@@ -80,13 +80,15 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-size: 0.9rem;
             text-transform: uppercase;
+            color: var(--dark-color);
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
@@ -96,16 +98,19 @@
         .btn-contact {
             background: var(--primary-color);
             color: white !important;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.4rem;
             border-radius: 50px;
-            transition: transform 0.3s, background 0.3s !important;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+            transition: all 0.3s;
         }
 
         .btn-contact:hover {
             transform: translateY(-2px);
             background: #d35400 !important;
-            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
         }
 
         .menu-toggle {
@@ -115,11 +120,11 @@
             cursor: pointer;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (UPDATED IMAGE) --- */
         .hero {
             height: 100vh;
-            /* UPDATED: High-quality image of hens and eggs */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1559058789-672da06263d8?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            /* UPDATED BACKGROUND IMAGE with overlay for readability */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://img.freepik.com/premium-photo/hen-hatching-eggs-with-farm-background_41969-14128.jpg?w=900') no-repeat center center/cover;
             background-attachment: fixed;
             display: flex;
             align-items: center;
@@ -127,18 +132,18 @@
             text-align: center;
             color: white;
             padding: 0 20px;
+            margin-top: 60px;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            animation: fadeInDown 1s ease;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
         }
 
         .hero-content h1 span {
@@ -148,9 +153,8 @@
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease 0.3s forwards;
-            opacity: 0;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+            font-weight: 300;
         }
 
         .hero-btn {
@@ -162,13 +166,11 @@
             font-size: 1.1rem;
             font-weight: 600;
             transition: all 0.3s;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
         }
 
         .hero-btn:hover {
-            background: #27ae60;
+            background: #219150;
             transform: translateY(-3px);
         }
 
@@ -185,7 +187,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             color: var(--dark-color);
             position: relative;
         }
@@ -196,7 +198,7 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 70px;
             height: 4px;
             background: var(--secondary-color);
             border-radius: 2px;
@@ -209,24 +211,25 @@
         /* --- OWNER SECTION --- */
         .owner-section {
             text-align: center;
-            background: #fff;
+            background: white;
+            padding-bottom: 2rem;
         }
 
         .owner-name {
             font-family: 'Great Vibes', cursive;
             font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
         }
 
         .owner-title {
-            color: #777;
-            font-size: 1.2rem;
+            color: #888;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* --- NEW ABOUT US SECTION --- */
+        /* --- ABOUT US SECTION --- */
         .about-us {
             background-color: var(--light-color);
         }
@@ -234,7 +237,7 @@
         .about-container {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 4rem;
         }
 
         .about-img {
@@ -242,12 +245,13 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            height: 400px;
         }
 
         .about-img img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-content {
@@ -255,14 +259,16 @@
         }
 
         .about-content h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             color: var(--dark-color);
+            line-height: 1.3;
         }
 
         .about-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: #555;
+            font-size: 1.05rem;
         }
         
         .about-features {
@@ -280,7 +286,7 @@
         .feature i {
             font-size: 1.5rem;
             color: var(--secondary-color);
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         .feature span {
@@ -295,7 +301,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
         }
 
@@ -306,6 +312,7 @@
             box-shadow: var(--shadow);
             transition: all 0.4s ease;
             position: relative;
+            border: 1px solid #eee;
         }
 
         .product-card:hover {
@@ -321,52 +328,58 @@
             color: white;
             padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             z-index: 10;
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .card-badge.hot { background: #e74c3c; }
         .card-badge.premium { background: var(--dark-color); }
 
         .product-img-container {
-            height: 220px;
+            height: 250px;
+            width: 100%;
             overflow: hidden;
             position: relative;
-            background-color: #f0f0f0; /* Placeholder color */
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; 
+            padding: 5px;
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .product-card:hover .product-img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .product-info {
-            padding: 1.8rem;
+            padding: 1.5rem;
             text-align: center;
-            border-bottom: 4px solid var(--secondary-color);
         }
 
         .product-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--dark-color);
         }
 
         .product-price {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: baseline;
             justify-content: center;
@@ -374,7 +387,7 @@
         }
 
         .product-price small {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #888;
             font-weight: 400;
         }
@@ -383,12 +396,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             width: 100%;
-            padding: 1rem;
+            padding: 0.9rem;
             background: var(--dark-color);
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
@@ -398,16 +411,109 @@
         .order-btn:hover {
             background: var(--primary-color);
         }
-        
+
         .order-btn.check-rate {
-            background: var(--primary-color);
+            background: #f39c12;
         }
         
         .order-btn.check-rate:hover {
             background: #d35400;
         }
 
-        /* --- NEW TESTIMONIALS SECTION --- */
+        /* --- NEW HOME DELIVERY SECTION --- */
+        .delivery-section {
+            background: var(--primary-color);
+            /* background: linear-gradient(45deg, var(--primary-color), #d35400); */
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .delivery-content {
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .delivery-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            animation: pulse 2s infinite;
+        }
+
+        .delivery-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .delivery-section h2 span {
+            color: var(--dark-color);
+            background: white;
+            padding: 2px 10px;
+            border-radius: 5px;
+        }
+
+        .delivery-section p.lead {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .delivery-note {
+            font-size: 1rem;
+            background: rgba(0,0,0,0.15);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 2.5rem !important;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .delivery-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .delivery-btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .delivery-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .delivery-btn.whatsapp {
+             background-color: #25d366;
+             color: white;
+        }
+         .delivery-btn.call {
+             background-color: white;
+             color: var(--primary-color);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+
+        /* --- TESTIMONIALS --- */
         .testimonials {
             background-color: var(--light-color);
         }
@@ -420,21 +526,19 @@
 
         .testimonial-card {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 15px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             position: relative;
+            text-align: left;
         }
 
-        .testimonial-card::before {
-            content: '\201C';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 4rem;
+        .testimonial-card i.quote {
+            font-size: 2rem;
             color: var(--primary-color);
-            opacity: 0.2;
-            font-family: serif;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .testimonial-text {
@@ -443,19 +547,15 @@
             margin-bottom: 1.5rem;
         }
         
-        .testimonial-user {
-            display: flex;
-            align-items: center;
-        }
-        
         .user-info h4 {
-            margin-bottom: 5px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark-color);
+            margin-bottom: 5px;
         }
 
         .stars {
             color: #f1c40f;
+            font-size: 0.9rem;
         }
 
         /* --- CONTACT SECTION --- */
@@ -466,7 +566,7 @@
         .contact-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 0;
             background: white;
             border-radius: 20px;
             overflow: hidden;
@@ -475,20 +575,20 @@
 
         .contact-info {
             flex: 1;
-            min-width: 320px;
-            padding: 3rem;
+            min-width: 350px;
+            padding: 4rem;
             background: var(--dark-color);
             color: white;
         }
 
         .contact-info h3 {
             font-size: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .info-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 2rem;
         }
 
@@ -502,20 +602,19 @@
             justify-content: center;
             align-items: center;
             margin-right: 20px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
         .info-text h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            color: #fff;
         }
 
         .info-text p, .info-text a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.7);
             font-size: 1rem;
-            line-height: 1.8;
             transition: color 0.3s;
         }
         
@@ -525,60 +624,61 @@
 
         .map-container {
             flex: 1.5;
-            min-width: 320px;
-            min-height: 450px;
+            min-width: 350px;
+            min-height: 500px;
         }
         
         .map-container iframe {
             width: 100%;
             height: 100%;
-            filter: grayscale(20%);
+            filter: grayscale(10%);
         }
 
         /* --- FOOTER --- */
         footer {
-            background: #1a252f;
+            background: #111;
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem 2rem;
         }
 
         .footer-logo {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
             display: block;
         }
         
         .footer-social {
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .footer-social a {
             display: inline-flex;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
+            width: 45px;
+            height: 45px;
+            background: #333;
             color: white;
-            margin: 0 5px;
+            margin: 0 8px;
             border-radius: 50%;
             justify-content: center;
             align-items: center;
             transition: all 0.3s;
+            font-size: 1.1rem;
         }
         
         .footer-social a:hover {
             background: var(--primary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .developer-credit {
-            margin-top: 2rem;
+            margin-top: 3rem;
             font-size: 0.9rem;
-            color: #aaa;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
+            color: #777;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
         }
 
         .developer-credit a {
@@ -590,14 +690,10 @@
          }
 
         /* --- RESPONSIVE CSS --- */
-        @media (max-width: 992px) {
-             .hero-content h1 { font-size: 3rem; }
-             .about-container { flex-direction: column; }
-             .about-img { width: 100%; }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: block;
+            }
 
             .nav-links {
                 position: absolute;
@@ -612,41 +708,69 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease-in-out;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             }
 
-            .nav-links.active { max-height: 500px; }
+            .nav-links.active {
+                max-height: 500px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
 
             .nav-links a {
                 display: block;
                 padding: 1.5rem;
                 width: 100%;
-                text-align: center;
-                border-bottom: 1px solid #f5f5f5;
+                border-bottom: 1px solid #f9f9f9;
             }
             
             .btn-contact {
-                margin: 1rem auto;
-                width: 80%;
-                text-align: center;
+                margin: 1.5rem auto;
+                display: inline-flex;
+                width: auto;
             }
 
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.1rem; }
+            .about-container {
+                flex-direction: column;
+            }
             
-            .contact-container { flex-direction: column; }
-            .contact-info, .map-container { min-width: 100%; }
-            .map-container { height: 350px; }
+            .about-img {
+                width: 100%;
+                height: 300px;
+            }
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .contact-info, .map-container {
+                min-width: 100%;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+
+            .delivery-section h2 {
+                font-size: 2.2rem;
+            }
+            .delivery-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* Floating WhatsApp Button */
@@ -688,8 +812,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#products">Rates & Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#delivery">Delivery</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact" class="btn-contact"><i class="fas fa-phone-alt"></i> Call Now</a></li>
             </ul>
@@ -708,7 +833,7 @@
         <div class="section-container">
             <div class="owner-name">Manibhushan Ji</div>
             <div class="owner-title">Owner & Proprietor</div>
-            <p style="max-width: 700px; margin: auto; font-size: 1.1rem;">Ideally located in Kaithwalaiya Gawn, we are dedicated to raising healthy, happy poultry to provide our community with the most nutritious meat and eggs available.</p>
+            <p style="max-width: 700px; margin: auto; font-size: 1.1rem; color: #555;">Ideally located in Kaithwalaiya Gawn, we are dedicated to raising healthy, happy poultry to provide our community with the most nutritious meat and eggs available.</p>
         </div>
     </section>
 
@@ -717,12 +842,12 @@
             <h2 class="section-title">Why Choose <span>Us?</span></h2>
             <div class="about-container">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1582438417753-8235766b9a2c?q=80&w=800&auto=format&fit=crop" alt="Healthy Hens in a clean environment">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.TvOVIj3WydsgSZHDIyTRlgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Healthy Red Chick">
                 </div>
                 <div class="about-content">
-                    <h3>Commitment to Quality & Hygiene</h3>
-                    <p>At Sunrise Poultry Farm, we believe that healthy food starts with a healthy environment. We are committed to the highest standards of hygiene and care for our flock.</p>
-                    <p>Our poultry is raised on natural, organic feed, free from harmful chemicals and growth promoters. This ensures that you get meat and eggs that are not only delicious but also packed with natural nutrients, just as nature intended.</p>
+                    <h3>Pure Hygiene & Fully Stocked</h3>
+                    <p>We maintain a <strong>pure, hygienic farm environment</strong> that is always full of healthy stock. Our priority is cleanliness and animal welfare to ensure you receive the best quality products.</p>
+                    <p>Our poultry is raised on natural, organic feed, free from harmful chemicals. Whether you need bulk orders or daily essentials, our farm is fully stocked and ready to serve.</p>
                     
                     <div class="about-features">
                         <div class="feature">
@@ -730,8 +855,8 @@
                             <span>100% Hygienic Farm</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-leaf"></i>
-                            <span>Organic Feed</span>
+                            <i class="fas fa-layer-group"></i>
+                            <span>Always Fully Stocked</span>
                         </div>
                         <div class="feature">
                             <i class="fas fa-egg"></i>
@@ -756,7 +881,7 @@
                 <div class="product-card">
                     <span class="card-badge hot">Trending</span>
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1585541534259-640f117303d7?q=80&w=600&auto=format&fit=crop" alt="Bater Quail" class="product-img">
+                        <img src="https://capon.in/media/2022/04/bater-quail-capon.jpg" alt="Bater Quail" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Bater (Quail)</h3>
@@ -768,7 +893,7 @@
                 <div class="product-card">
                     <span class="card-badge">Organic</span>
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1599581881857-e14f856f6c9d?q=80&w=600&auto=format&fit=crop" alt="Desi Hen" class="product-img">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.8lzCQOuNNUc1lW01iaJOMgHaHD?w=1556&h=1482&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Desi Hen" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Desi Hen (Local)</h3>
@@ -780,7 +905,7 @@
                 <div class="product-card">
                     <span class="card-badge premium">Premium</span>
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1612170366624-b6330ce379f5?q=80&w=600&auto=format&fit=crop" alt="Kadaknath Chicken" class="product-img">
+                        <img src="https://5.imimg.com/data5/ANDROID/Default/2023/8/336382753/SS/XV/XT/85312430/product-jpeg-1000x1000.jpg" alt="Kadaknath Chicken" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Kadaknath</h3>
@@ -791,7 +916,7 @@
 
                 <div class="product-card">
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1605456337929-0753f5006603?q=80&w=600&auto=format&fit=crop" alt="Titir Guinea Fowl" class="product-img">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.RA6oT6pBYzKxOHJdhvPQiQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Titir Guinea Fowl" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Titir (Guinea Fowl)</h3>
@@ -802,7 +927,7 @@
 
                 <div class="product-card">
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1605456337877-060d44cb9a89?q=80&w=600&auto=format&fit=crop" alt="Boiler Chicken" class="product-img">
+                        <img src="https://img3.exportersindia.com/product_images/bc-full/2018/7/5366419/broiler-chickens-1531542798-4100347.jpeg" alt="Boiler Chicken" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Boiler Chicken</h3>
@@ -813,7 +938,7 @@
 
                 <div class="product-card">
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1615808568531-e18f94065142?q=80&w=600&auto=format&fit=crop" alt="Little Chicks" class="product-img">
+                        <img src="https://cdn.vox-cdn.com/thumbor/VAzxtRV_QDH-1RkHnf0TiRtK6fQ=/0x0:3313x2163/1200x800/filters:focal(1392x817:1922x1347)/cdn.vox-cdn.com/uploads/chorus_image/image/66608840/shutterstock_89645749.0.jpg" alt="Little Chicks" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Hunda & Chicks</h3>
@@ -825,7 +950,7 @@
                 <div class="product-card">
                     <span class="card-badge">Farm Fresh</span>
                     <div class="product-img-container">
-                        <img src="https://images.unsplash.com/photo-1590796237172-e1f3d730691b?q=80&w=600&auto=format&fit=crop" alt="Fresh Eggs in a basket" class="product-img">
+                        <img src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=600&q=80" alt="Fresh Eggs in a basket" class="product-img">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Fresh Eggs</h3>
@@ -838,40 +963,53 @@
         </div>
     </section>
 
+    <section id="delivery" class="delivery-section">
+        <div class="section-container">
+            <div class="delivery-content">
+                <i class="fas fa-truck-fast delivery-icon"></i>
+                <h2>Home Delivery <span>Available!</span></h2>
+                <p class="lead">We bring freshness directly to your doorstep.</p>
+                <p>For home delivery requests, please contact us directly. We ensure safe and quick delivery of your orders.</p>
+                <p class="delivery-note"><em>Note: Delivery charges apply according to delivery distance.</em></p>
+                <div class="delivery-actions">
+                    <a href="https://wa.me/919546010801?text=Hello, I would like to request home delivery for..." class="delivery-btn whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Request</a>
+                    <a href="tel:9546010801" class="delivery-btn call"><i class="fas fa-phone-alt"></i> Call for Delivery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="testimonials" class="testimonials">
         <div class="section-container">
             <h2 class="section-title">Customer <span>Comments</span></h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote"></i>
                     <p class="testimonial-text">"Very fresh desi chicken and eggs. You can really taste the difference compared to market ones. Highly recommended!"</p>
-                    <div class="testimonial-user">
-                        <div class="user-info">
-                            <h4>Rajesh Kumar</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
+                    <div class="user-info">
+                        <h4>Rajesh Kumar</h4>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote"></i>
                     <p class="testimonial-text">"Manibhushan Ji provides excellent service. The Kadaknath I bought was genuine and of premium quality. Will buy again."</p>
-                    <div class="testimonial-user">
-                        <div class="user-info">
-                            <h4>Amit Singh</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
+                    <div class="user-info">
+                        <h4>Amit Singh</h4>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote"></i>
                     <p class="testimonial-text">"Clean farm and healthy chicks. I bought a pair of Hunda and they are growing very well. Honest pricing too."</p>
-                    <div class="testimonial-user">
-                        <div class="user-info">
-                            <h4>Suresh Yadav</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
+                    <div class="user-info">
+                        <h4>Suresh Yadav</h4>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
                         </div>
                     </div>
                 </div>
@@ -923,7 +1061,7 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/919546010801"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p>© 2024 Sunrise Poultry Farm. All Rights Reserved.</p>
+        <p style="color: #777; font-size: 0.9rem;">© 2024 Sunrise Poultry Farm. All Rights Reserved.</p>
         
         <div class="developer-credit">
             <p>Developed by <a href="https://share.google/dHGGKQC5NnoCxTSLU" target="_blank">Pratham Kumar</a></p>
@@ -935,7 +1073,7 @@
     </a>
 
     <script>
-        // 1. Mobile Navigation Toggle
+        // Mobile Navigation Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         const navLinkItems = document.querySelectorAll('.nav-links a');
@@ -943,31 +1081,26 @@
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             // Change icon from hamburger to 'X'
-            menuToggle.querySelector('i').classList.toggle('fa-bars');
-            menuToggle.querySelector('i').classList.toggle('fa-times');
+            const icon = menuToggle.querySelector('i');
+            if(icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Close menu when a link is clicked (for mobile)
+        // Close menu when a link is clicked
         navLinkItems.forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
-                    menuToggle.querySelector('i').classList.remove('fa-times');
-                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
             });
-        });
-
-        // 2. Sticky Header Effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '0.5rem 5%';
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.padding = '1rem 5%';
-                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
-            }
         });
     </script>
 </body>
